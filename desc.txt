@@ -1,0 +1,69 @@
+zone war
+
+how it works, ai vs human, in turns? 
+
+in turn 
+
+each one have three pin
+
+each turn you can decide either to put a pin, 
+    or to move your existing pin to another place
+    
+
+the field is a grid that contains 20x20 case 
+
+if a pin is put in a case, it start elarging its area 
+each turn, a pin that havent moved yet give to the player to play this: 
+    chose one neighbor case to the area of that pin,
+        if it is not colored yet, you colorify it 
+        if it is colorified with your opponent color, you remove the color 
+        if colorified by you, nothing happen 
+        
+the AI will decide based on your area wich pin to move or (if possible) where to put the new pin
+and where to do the expansion operation, wheter to gain new territory or to got new one
+
+
+you cant uncolorify a case with the opponent pin, unless it is the only case colorified by that pin 
+if uncolorifying the case with a pin, the pin is removed and it cant be put again untill 3 turns
+
+
+if an area that is colorified with two pins, randomly one of them is eliminated, the area remains colored
+
+
+the case that change its color (colored or uncolored) remains protected from modifications for one turn 
+
+
+
+scale of the grid and the number of pin for each player is modifyable, but for the game,  it will be 20x20 and 3 pins
+
+recap: 
+
+each turn there are two phases: 
+
+each turn, you either envade, revive, or move
+
+envade, choose a pin to 
+
+
+phase1: 
+    decide the pin to move or to make enter 
+note about this phase: 
+    outsider pins cant be entered unless they passed 3 turns outside 
+    moved pin can move one step each turn, choose the moving direction
+    entered pin are randomly distributed in the field
+    in general, you need to give (pin[0-2], direction[0-3]) possibilities: 12 -> bits needed: 4
+
+
+
+
+phase2: 
+    decide cases to unlock or to liberate, thus they are protected for the next turn 
+    
+note about this phase: 
+    you cant choose a non neighbor case to modify  
+    you cant choose a case with opponent pin if it has neighbor case with his color 
+    you cant choose a protected case 
+    you need to give a pin 
+    
+
+the game ends if a player have no pin in the field, or after a number of turns, if so, the player with more case wins
